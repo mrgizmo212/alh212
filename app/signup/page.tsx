@@ -1,18 +1,15 @@
-import { auth } from '@/auth'
-import SignupForm from '@/components/signup-form'
-import { Session } from '@/lib/types'
-import { redirect } from 'next/navigation'
+// app/signup/page.tsx
+import { SignupForm } from '@/components/signup-form'
 
-export default async function SignupPage() {
-  const session = (await auth()) as Session
-
-  if (session) {
-    redirect('/')
-  }
-
+export default function SignupPage() {
   return (
-    <main className="flex flex-col p-4">
-      <SignupForm />
-    </main>
+    <div className="flex h-[calc(100vh-theme(spacing.16))] items-center justify-center py-10">
+      <div className="w-full max-w-md space-y-8">
+        <div className="text-center">
+          <h1 className="text-2xl font-bold">Sign Up for Chat</h1>
+        </div>
+        <SignupForm />
+      </div>
+    </div>
   )
 }
